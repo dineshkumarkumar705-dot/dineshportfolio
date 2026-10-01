@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Dinesh Kumar — Senior Data Engineer, AI & Cloud Data Architect. Portfolio, projects, products and resume.">
+<title>Dinesh Kumar | Senior Data Engineer &amp; AI Architect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+:root{--bg:#07111f;--card:#0d1b2e;--text:#eef5ff;--muted:#a8b8cc;--a:#63d8ff;--b:#8b7cff;--line:#22344b;--ok:#6ee7a8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 0,#12365a 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+.wrap{max-width:1120px;margin:auto;padding:0 22px}
+h1,h2,h3,.brand{font-family:Sora,Inter,Arial,sans-serif}
+
+/* scroll progress bar */
+.progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--a),var(--b));z-index:60;transition:width .1s linear}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:#07111fcc;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:68px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:22px;font-weight:800}
+.brand i{color:var(--a);font-style:normal}
+.links{display:flex;gap:20px;color:var(--muted);font-size:14px}
+.links a{color:inherit;text-decoration:none;position:relative;padding:4px 0;transition:color .2s}
+.links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .25s}
+.links a:hover,.links a.active{color:var(--text)}
+.links a.active::after,.links a:hover::after{width:100%}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:22px;border-radius:9px;padding:6px 10px;cursor:pointer}
+.mobileMenu{position:fixed;inset:68px 0 0 0;background:#07111ff5;backdrop-filter:blur(14px);z-index:49;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;font-size:20px;transform:translateY(-110%);transition:transform .35s ease;opacity:0}
+.mobileMenu.open{transform:translateY(0);opacity:1}
+.mobileMenu a{color:var(--text);text-decoration:none}
+
+/* hero */
+.hero{position:relative;padding:90px 0 65px;overflow:hidden}
+#tsparticles{position:absolute;inset:0;z-index:0;opacity:.6;pointer-events:none}
+.heroGrid{position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .65fr;gap:55px;align-items:center}
+.eyebrow{color:var(--a);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(44px,7vw,76px);line-height:1;margin:14px 0}
+h1 span{background:linear-gradient(90deg,var(--a),#b4aaff);-webkit-background-clip:text;color:transparent}
+.lead{font-size:19px;color:var(--muted);max-width:700px}
+.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{padding:12px 17px;border-radius:11px;border:1px solid var(--line);background:var(--card);color:var(--text);text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px #0006}
+.primary{background:linear-gradient(135deg,var(--b),#4e78ff);border:0}
+.portraitWrap{width:min(320px,100%);aspect-ratio:1;margin:auto;position:relative;display:grid;place-items:center}
+.ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,var(--a),var(--b),var(--a));animation:spin 9s linear infinite;filter:blur(2px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.portrait-photo{position:relative;width:88%;height:88%;border-radius:50%;object-fit:cover;border:5px solid var(--bg);box-shadow:0 25px 70px #0008;animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:17px;position:relative;z-index:1}
+.stat{background:linear-gradient(145deg,#10243b,#0c192a);border:1px solid var(--line);border-radius:17px;padding:22px;text-align:center}
+.stat .num{font-family:Sora;font-size:38px;font-weight:800;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;color:transparent}
+.stat .label{color:var(--muted);font-size:13px;margin-top:6px}
+
+/* sections */
+.section{padding:70px 0;border-top:1px solid #ffffff0d}
+h2{font-size:34px;margin:0 0 25px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{background:linear-gradient(145deg,#10243b,#0c192a);border:1px solid var(--line);border-radius:17px;padding:22px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px #0007;border-color:var(--a)}
+.card h3{margin:0 0 8px;font-size:18px}
+.card p{color:var(--muted);margin:0 0 10px;font-size:14px}
+.card ul{color:var(--muted);margin:0 0 10px;padding-left:20px;font-size:14px}
+.card ul li{margin:4px 0}
+.tag{display:inline-block;background:#132742;border:1px solid var(--line);color:var(--a);font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;margin:3px 4px 0 0}
+
+/* timeline */
+.timeline{position:relative;padding-left:24px;border-left:2px solid var(--line)}
+.item{position:relative;padding-bottom:34px}
+.item:last-child{padding-bottom:0}
+.dot{position:absolute;left:-30px;top:4px;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 0 0 4px #0d1b2e}
+.date{color:var(--a);font-size:12px;font-weight:700;margin:4px 0}
+.muted{color:var(--muted)}
+
+/* filters */
+.filterRow{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.filterBtn{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s}
+.filterBtn:hover{color:var(--text)}
+.filterBtn.active{background:linear-gradient(135deg,var(--b),#4e78ff);color:#fff;border:0}
+.card.hidden{display:none}
+
+/* products */
+.prodIcon{width:48px;height:48px;border-radius:13px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;font-size:24px;color:#07111f;margin-bottom:12px}
+
+/* skills */
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skill{background:#132742;border:1px solid var(--line);padding:8px 14px;border-radius:999px;font-size:13px;display:inline-flex;align-items:center}
+.skill img{width:16px;height:16px;margin-right:7px}
+
+/* cert logos */
+.certLogo{width:22px;height:22px;vertical-align:-5px;margin-right:8px}
+
+/* contact */
+.cta{background:linear-gradient(145deg,#10243b,#0c192a);border:1px solid var(--line);border-radius:20px;padding:40px}
+.resumePreview{display:none;margin-top:22px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.resumePreview.open{display:block}
+.resumePreview iframe{width:100%;height:560px;border:0;background:#fff}
+
+/* footer */
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.footRow{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.social{display:flex;gap:12px}
+.social a{color:var(--text);background:var(--card);border:1px solid var(--line);width:38px;height:38px;border-radius:10px;display:grid;place-items:center;text-decoration:none;font-size:18px;transition:.2s}
+.social a:hover{color:#07111f;background:var(--a)}
+.toTop{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--b),#4e78ff);color:#fff;border:0;display:grid;place-items:center;font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:40}
+.toTop.show{opacity:1;pointer-events:auto}
+.toTop:hover{transform:translateY(-4px)}
+
+@media(hover:hover){.cursorGlow{position:fixed;width:26px;height:26px;border-radius:50%;background:radial-gradient(circle,#63d8ff66,transparent 70%);pointer-events:none;z-index:70;transform:translate(-50%,-50%);transition:opacity .2s}}
+
+@media(max-width:860px){
+  .links{display:none}
+  .burger{display:inline-flex}
+  .heroGrid{grid-template-columns:1fr;text-align:center}
+  .lead{margin:14px auto 0}
+  .buttons{justify-content:center}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:1fr}
+  .footRow{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="wrap nav">
+    <div class="brand">Dinesh<i>.</i></div>
+    <div class="links" id="navLinks">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#products">Products</a><a href="#skills">Skills</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Toggle menu"><i class='bx bx-menu'></i></button>
+  </div>
+</nav>
+<div class="mobileMenu" id="mobileMenu">
+  <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#products">Products</a><a href="#skills">Skills</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a>
+</div>
+
+<header class="hero">
+  <div id="tsparticles"></div>
+  <div class="wrap heroGrid">
+    <div data-aos="fade-right">
+      <div class="eyebrow">Senior Data Engineer · AI &amp; Cloud Data Architect</div>
+      <h1>Dinesh Kumar<br><span id="typed">Data · Cloud · AI</span></h1>
+      <p class="lead">11 years of experience, including 10+ years as a Senior Data Engineer, working across PySpark, Python, Big Data, Azure, AWS, Databricks, ETL, DevOps, automation and Generative AI.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">Explore My Work</a>
+        <a class="btn" href="Dinesh_Kumar_Resume.pdf" download><i class='bx bx-download'></i>Download Resume</a>
+        <a class="btn" href="https://www.linkedin.com/in/dinesh-kumar-2a714574/" target="_blank" rel="noopener"><i class='bx bxl-linkedin-square'></i>LinkedIn</a>
+      </div>
+    </div>
+    <div data-aos="fade-left">
+      <div class="portraitWrap">
+        <div class="ring"></div>
+        <img src="pic.png" alt="Dinesh Kumar portrait" class="portrait-photo">
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat" data-aos="zoom-in"><div class="num" data-target="11">0</div><div class="label">Years Experience</div></div>
+    <div class="stat" data-aos="zoom-in" data-aos-delay="100"><div class="num" data-target="10">0</div><div class="label">Projects Delivered</div></div>
+    <div class="stat" data-aos="zoom-in" data-aos-delay="200"><div class="num" data-target="100">0</div><div class="label">Engineers Trained</div></div>
+    <div class="stat" data-aos="zoom-in" data-aos-delay="300"><div class="num" data-target="7">0</div><div class="label">Certifications</div></div>
+  </div>
+</div>
+
+<section id="about" class="section">
+  <div class="wrap">
+    <h2 data-aos="fade-up">About</h2>
+    <div class="card" data-aos="fade-up">
+      <p>Dinesh Kumar is a Senior Data Engineer at PepsiCo, Gurugram. The profile covers cloud migration, data transformation applications, ETL concepts, Agile development, stakeholder communication, analytical problem solving and teamwork.</p>
+      <p>I enjoy solving operational and enterprise workflow problems using automation, AI, analytics, and scalable internal tools.</p>
+      <p>My focus areas include:</p>
+      <ul>
+        <li>Enterprise workflow automation</li>
+        <li>Data governance &amp; lineage</li>
+        <li>Dashboard and analytics products</li>
+        <li>AI-powered operational tools</li>
+        <li>Databricks ecosystem solutions</li>
+      </ul>
+      <p>I'm particularly interested in building products that reduce manual effort, improve visibility, and simplify large-scale operations.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section">
+  <div class="wrap">
+    <h2 data-aos="fade-up">Professional Experience</h2>
+    <div class="timeline">
+      <div class="item" data-aos="fade-up"><span class="dot"></span><b>Sr. Data Engineer · PepsiCo</b><div class="date">Jan 2024 – Present</div><p class="muted">Enterprise data engineering, ETL frameworks, cloud data platforms and AI-enabled automation.</p></div>
+      <div class="item" data-aos="fade-up"><span class="dot"></span><b>Senior Data Engineer · Persistent System Ltd</b><div class="date">Aug 2021 – Dec 2023</div><p class="muted">Thermo Fisher projects using Databricks, PySpark, Delta Lake, Airflow and CI/CD.</p></div>
+      <div class="item" data-aos="fade-up"><span class="dot"></span><b>Senior Software Engineer · Cavission System Ltd</b><div class="date">Dec 2019 – Aug 2021</div><p class="muted">DataLab and data governance/analytics work.</p></div>
+      <div class="item" data-aos="fade-up"><span class="dot"></span><b>IT Analyst · TCS</b><div class="date">Mar 2015 – Dec 2019</div><p class="muted">Enterprise data warehousing and BFSI projects.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="wrap">
+    <h2 data-aos="fade-up">Projects</h2>
+    <div class="filterRow" id="filterRow" data-aos="fade-up">
+      <button class="filterBtn active" data-filter="all">All</button>
+      <button class="filterBtn" data-filter="azure">Azure</button>
+      <button class="filterBtn" data-filter="databricks">Databricks</button>
+      <button class="filterBtn" data-filter="ai">AI</button>
+      <button class="filterBtn" data-filter="etl">ETL</button>
+    </div>
+    <div class="grid" id="projectGrid">
+      <div class="card" data-aos="fade-up" data-tags="azure databricks"><h3>Sustainability</h3><p>PepsiCo · Jan 2024–Dec 2024. ETL framework and pipeline for bronze, silver and gold tables.</p><span class="tag">ADF</span><span class="tag">Databricks</span><span class="tag">PySpark</span><span class="tag">Delta Lake</span></div>
+      <div class="card" data-aos="fade-up" data-tags="azure"><h3>Employee Domain</h3><p>PepsiCo · Jan 2025–Present. Employee-domain ETL framework with classified data and layered tables.</p><span class="tag">ADF</span><span class="tag">ADLS2</span><span class="tag">API</span><span class="tag">OData</span></div>
+      <div class="card" data-aos="fade-up" data-tags="ai"><h3>EDF Framework</h3><p>PepsiCo · Jan 2025–Present. LLM-based source-to-target auto mapping and user-input driven auto ingestion.</p><span class="tag">LLM</span><span class="tag">Pepflow</span><span class="tag">PepGPT</span></div>
+      <div class="card" data-aos="fade-up" data-tags="etl"><h3>Galileo</h3><p>Thermo Fisher · Aug 2021–Jul 2022. Near real-time source DB to data lake ETL framework.</p><span class="tag">ETL</span><span class="tag">Real-time</span></div>
+      <div class="card" data-aos="fade-up" data-tags="etl"><h3>LPD Atscale</h3><p>Thermo Fisher · Jul 2022–Dec 2023. Enterprise analytics capability, consolidated data models and reduced manual activities.</p><span class="tag">Analytics</span><span class="tag">ETL</span></div>
+      <div class="card" data-aos="fade-up" data-tags="etl"><h3>DataLab</h3><p>Cole · Dec 2019–Aug 2021. Standardized analytical environment under a Data Governance and Analytics program.</p><span class="tag">Governance</span><span class="tag">ETL</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="section">
+  <div class="wrap">
+    <h2 data-aos="fade-up">Products</h2>
+    <div class="grid">
+      <div class="card" data-aos="fade-up"><div class="prodIcon"><i class='bx bx-data'></i></div><h3>Data Engineering Accelerator</h3><p>AI-powered tool that auto-generates data quality rules and source-to-target mappings.</p><span class="tag">AI</span><span class="tag">Automation</span></div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100"><div class="prodIcon"><i class='bx bx-brain'></i></div><h3>AI Tutor Apps</h3><p>Interactive AI-driven tutoring apps that teach technical and data engineering concepts.</p><span class="tag">AI</span><span class="tag">EdTech</span></div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200"><div class="prodIcon"><i class='bx bx-book-reader'></i></div><h3>SaaS-based LMS</h3><p>Cloud-hosted Learning Management System for structured online training programs.</p><span class="tag">SaaS</span><span class="tag">LMS</span></div>
+      <div class="card" data-aos="fade-up"><div class="prodIcon"><i class='bx bx-bot'></i></div><h3>AI Assistant &amp; Personal Chatbot</h3><p>Conversational AI assistant built for personal productivity and Q&amp;A automation.</p><span class="tag">AI</span><span class="tag">Chatbot</span></div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100"><div class="prodIcon"><i class='bx bx-laptop'></i></div><h3>Modern Websites &amp; Apps</h3><p>A portfolio of modern, responsive websites and applications built end-to-end.</p><span class="tag">Full-Stack</span><span class="tag">Web</span></div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200"><div class="prodIcon"><i class='bx bx-globe'></i></div><h3>Real-Time Multi-Language AI Translator</h3><p>Speech and text translation across multiple languages with low-latency, AI-driven real-time conversion.</p><span class="tag">AI</span><span class="tag">Real-Time</span></div>
+      <div class="card" data-aos="fade-up"><div class="prodIcon"><i class='bx bx-check-shield'></i></div><h3>Automated Data Testing &amp; Reconciliation</h3><p>AI-assisted framework that auto-generates and runs data quality, testing and recon checks across pipelines.</p><span class="tag">AI</span><span class="tag">Data Quality</span></div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100"><div class="prodIcon"><i class='bx bx-broadcast'></i></div><h3>Enterprise Pipeline Watchtower</h3><p>Centralized monitoring and alerting platform giving end-to-end visibility into enterprise data pipeline health.</p><span class="tag">Monitoring</span><span class="tag">Observability</span></div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200"><div class="prodIcon"><i class='bx bx-line-chart'></i></div><h3>ADO Insights Analyzer</h3><p>Analyzes Azure DevOps boards and repos to surface sprint, backlog and delivery insights automatically.</p><span class="tag">Analytics</span><span class="tag">DevOps</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <div class="wrap">
+    <h2 data-aos="fade-up">Technology Stack</h2>
+    <div class="skills" data-aos="fade-up">
+      <span class="skill"><img src="https://cdn.simpleicons.org/apachespark/63d8ff" alt="">PySpark</span><span class="skill">Spark SQL</span><span class="skill"><img src="https://cdn.simpleicons.org/python/63d8ff" alt="">Python</span><span class="skill">SQL</span><span class="skill">Delta Lake</span><span class="skill"><img src="https://cdn.simpleicons.org/apachehive/63d8ff" alt="">Hive</span><span class="skill"><img src="https://cdn.simpleicons.org/apachehadoop/63d8ff" alt="">Hadoop</span><span class="skill"><img src="https://cdn.simpleicons.org/microsoftazure/63d8ff" alt="">Azure</span><span class="skill">ADF</span><span class="skill"><img src="https://cdn.simpleicons.org/databricks/63d8ff" alt="">Databricks</span><span class="skill">ADLS Gen2</span><span class="skill">Synapse</span><span class="skill"><img src="https://cdn.simpleicons.org/amazonaws/63d8ff" alt="">AWS S3</span><span class="skill">Glue</span><span class="skill">Athena</span><span class="skill"><img src="https://cdn.simpleicons.org/apacheairflow/63d8ff" alt="">Airflow</span><span class="skill">CI/CD</span><span class="skill"><img src="https://cdn.simpleicons.org/jenkins/63d8ff" alt="">Jenkins</span><span class="skill"><img src="https://cdn.simpleicons.org/github/63d8ff" alt="">GitHub</span><span class="skill">LLMs</span><span class="skill">GPT-based automation</span><span class="skill">Generative AI</span><span class="skill">PepGPT</span><span class="skill">NextGen</span>
+    </div>
+  </div>
+</section>
+
+<section id="achievements" class="section">
+  <div class="wrap">
+    <h2 data-aos="fade-up">Achievements &amp; Certifications</h2>
+    <div class="grid">
+      <div class="card" data-aos="fade-up"><h3>AI Tutorial Series</h3><p>AI tutorial series teaching LLMs and 20+ AI tools.</p></div>
+      <div class="card" data-aos="fade-up"><h3>Training</h3><p>Trained 100+ engineers on Python and data engineering best practices.</p></div>
+      <div class="card" data-aos="fade-up"><h3>Recognition</h3><p>Multiple Team Spot Awards and Applause Awards.</p></div>
+      <div class="card" data-aos="fade-up"><h3>Certifications</h3><p>AWS Certified Solution Architecture; Python and SQL expert certification by Persistent; Databricks Data Engineer Fundamentals certification.</p></div>
+      <div class="card" data-aos="fade-up"><h3><img class="certLogo" src="https://cdn.simpleicons.org/microsoftazure/63d8ff" alt="">Azure AI Fundamentals</h3><p>Microsoft Azure AI Fundamentals — course certification covering core AI and machine learning concepts on Azure.</p></div>
+      <div class="card" data-aos="fade-up"><h3><img class="certLogo" src="https://cdn.simpleicons.org/microsoftazure/63d8ff" alt="">Generative AI on Azure</h3><p>Course certification on building and applying generative AI solutions using the Azure AI platform.</p></div>
+      <div class="card" data-aos="fade-up"><h3><img class="certLogo" src="https://cdn.simpleicons.org/databricks/63d8ff" alt="">Databricks Internal Certification</h3><p>Internal certification on Lakehouse architecture, Delta Lake and Spark-based data engineering on Databricks.</p></div>
+      <div class="card" data-aos="fade-up"><h3><img class="certLogo" src="https://cdn.simpleicons.org/microsoftazure/63d8ff" alt="">Azure Internal Certification</h3><p>Internal certification on Azure data engineering: ADF, ADLS Gen2 and cloud data platform fundamentals.</p></div>
+      <div class="card" data-aos="fade-up"><h3>Professional Excellence</h3><p>Certificate in Accounting Fundamentals, Card Transaction Life Cycle and Loyalty Management.</p></div>
+      <div class="card" data-aos="fade-up"><h3>Education</h3><p>2014 B.Tech, Electronics &amp; Communication Engineering, Full Time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="wrap">
+    <div class="cta" data-aos="fade-up">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's connect.</h2>
+      <p class="muted">Email: dineshkumar.kumar705@gmail.com</p>
+      <div class="buttons">
+        <a class="btn primary" href="mailto:dineshkumar.kumar705@gmail.com"><i class='bx bx-envelope'></i>Email Me</a>
+        <a class="btn" href="https://www.linkedin.com/in/dinesh-kumar-2a714574/" target="_blank" rel="noopener"><i class='bx bxl-linkedin-square'></i>LinkedIn</a>
+        <a class="btn" href="Dinesh_Kumar_Resume.pdf" download><i class='bx bx-download'></i>Resume</a>
+        <button class="btn" id="previewBtn" type="button"><i class='bx bx-file'></i>Preview Resume</button>
+      </div>
+      <div class="resumePreview" id="resumePreview"><iframe src="Dinesh_Kumar_Resume.pdf" title="Resume preview"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footRow">
+    <div>© 2026 Dinesh Kumar · Senior Data Engineer | AI &amp; Cloud Data Architect</div>
+    <div class="social">
+      <a href="mailto:dineshkumar.kumar705@gmail.com" aria-label="Email"><i class='bx bx-envelope'></i></a>
+      <a href="https://www.linkedin.com/in/dinesh-kumar-2a714574/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+      <a href="Dinesh_Kumar_Resume.pdf" download aria-label="Download resume"><i class='bx bx-download'></i></a>
+    </div>
+  </div>
+</footer>
+
+<button class="toTop" id="toTop" aria-label="Back to top"><i class='bx bx-up-arrow-alt'></i></button>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2/tsparticles.slim.bundle.min.js"></script>
+<script>
+AOS.init({duration:700,once:true,offset:60});
+
+/* particle background, scoped to hero */
+if (window.tsParticles) {
+  tsParticles.load("tsparticles", {
+    fullScreen: { enable: false },
+    background: { color: { value: "transparent" } },
+    fpsLimit: 60,
+    particles: {
+      number: { value: 45, density: { enable: true, area: 900 } },
+      color: { value: ["#63d8ff", "#8b7cff"] },
+      opacity: { value: 0.4 },
+      size: { value: { min: 1, max: 3 } },
+      links: { enable: true, color: "#63d8ff", opacity: 0.15, distance: 140 },
+      move: { enable: true, speed: 0.6 }
+    },
+    interactivity: {
+      events: { onHover: { enable: true, mode: "grab" } },
+      modes: { grab: { distance: 140, links: { opacity: 0.3 } } }
+    }
+  });
+}
+
+/* scroll progress bar */
+const progressEl = document.getElementById("progress");
+function updateProgress() {
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progressEl.style.width = pct + "%";
+}
+document.addEventListener("scroll", updateProgress, { passive: true });
+
+/* mobile nav toggle */
+const burger = document.getElementById("burger");
+const mobileMenu = document.getElementById("mobileMenu");
+burger.addEventListener("click", () => mobileMenu.classList.toggle("open"));
+mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileMenu.classList.remove("open")));
+
+/* scroll-spy active nav link */
+const sections = document.querySelectorAll("section[id], header[id]");
+const navAnchors = document.querySelectorAll(".links a");
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navAnchors.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + entry.target.id));
+    }
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+sections.forEach(s => spyObserver.observe(s));
+
+/* stat count-up */
+const statNums = document.querySelectorAll(".stat .num");
+const countObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = +el.dataset.target;
+      gsap.to(el, {
+        innerText: target, duration: 1.4, ease: "power1.out", snap: "innerText",
+        onUpdate() { el.innerText = Math.ceil(el.innerText) + (target >= 100 ? "+" : target === 7 ? "+" : ""); }
+      });
+      obs.unobserve(el);
+    }
+  });
+}, { threshold: 0.6 });
+statNums.forEach(el => countObserver.observe(el));
+
+/* project filter */
+const filterBtns = document.querySelectorAll(".filterBtn");
+const projectCards = document.querySelectorAll("#projectGrid .card");
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const f = btn.dataset.filter;
+    projectCards.forEach(card => {
+      const show = f === "all" || card.dataset.tags.includes(f);
+      card.classList.toggle("hidden", !show);
+    });
+  });
+});
+
+/* resume preview toggle */
+const previewBtn = document.getElementById("previewBtn");
+const resumePreview = document.getElementById("resumePreview");
+previewBtn.addEventListener("click", () => resumePreview.classList.toggle("open"));
+
+/* back to top */
+const toTop = document.getElementById("toTop");
+document.addEventListener("scroll", () => toTop.classList.toggle("show", window.scrollY > 500), { passive: true });
+toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+/* cursor glow, desktop only */
+if (window.matchMedia("(hover:hover)").matches) {
+  const glow = document.createElement("div");
+  glow.className = "cursorGlow";
+  document.body.appendChild(glow);
+  document.addEventListener("mousemove", e => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+  });
+}
+</script>
+</body>
+</html>
